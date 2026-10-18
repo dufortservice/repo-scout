@@ -11,6 +11,9 @@
   "repository": "https://github.com/dufortservice/repo-scout",
   "license": "MIT",
   "icon": "./.claude-plugin/icon.png",
+  "documentationUrl": "https://github.com/dufortservice/repo-scout#readme",
+  "supportUrl": "https://github.com/dufortservice/repo-scout/issues",
+  "privacyPolicyUrl": "https://github.com/dufortservice/repo-scout#data-and-privacy",
   "keywords": [
     "github",
     "open-source",
