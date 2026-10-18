@@ -1,0 +1,15 @@
+{
+  "name": "repo-scout",
+  "description": "Repo Scout by DufortService: GitHub research for your project's stack.",
+  "owner": {
+    "name": "Dufort",
+    "url": "https://dufortservice.com"
+  },
+  "plugins": [
+    {
+      "name": "repo-scout",
+      "source": "./",
+      "description": "Find popular, actively maintained GitHub repositories that fit your project's stack before you build something by hand."
+    }
+  ]
+}

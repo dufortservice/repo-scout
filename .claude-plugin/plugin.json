@@ -1,0 +1,21 @@
+{
+  "name": "repo-scout",
+  "displayName": "Repo Scout",
+  "version": "1.0.0",
+  "description": "Find popular, actively maintained GitHub repositories that fit your project's stack, ranked by relevance, popularity, freshness and momentum, before you build something by hand.",
+  "author": {
+    "name": "Dufort",
+    "url": "https://dufortservice.com"
+  },
+  "homepage": "https://github.com/dufortservice/repo-scout",
+  "repository": "https://github.com/dufortservice/repo-scout",
+  "license": "MIT",
+  "keywords": [
+    "github",
+    "open-source",
+    "libraries",
+    "research",
+    "build-vs-buy",
+    "dependencies"
+  ]
+}
