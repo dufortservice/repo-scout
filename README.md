@@ -59,23 +59,20 @@ In Claude Code you can also install it straight from this repository:
 - Python 3 (standard library only, nothing to install)
 - Network access to `api.github.com`
 
-### Optional: GitHub token
-
-Without a token, the GitHub Search API allows about 10 requests per minute,
-which is enough for occasional use. To raise the limit to about 30 requests per
-minute, set a `GITHUB_TOKEN` environment variable. A token with no scopes
-(read-only access to public data) is enough.
+No account or token is needed. The plugin uses the public, unauthenticated
+GitHub Search API, which allows about 10 requests per minute: plenty for
+occasional use. If you hit the limit, wait a minute and ask again.
 
 ## Data and privacy
 
-- **What is sent:** search keywords, an optional language and topic filter, and
-  minimum-stars and activity thresholds. These go only to the GitHub Search API
-  (`api.github.com`).
-- **What is not sent:** your source code, file contents and file names never
-  leave your machine. The stack is detected locally; only the derived keywords
-  are used in the query.
-- **Token:** if you set `GITHUB_TOKEN`, it is sent only to `api.github.com` as
-  an authorization header. It is never logged or written to disk by the plugin.
+- **What the script sends:** search keywords, an optional language and topic
+  filter, and minimum-stars and activity thresholds. These go only to the
+  GitHub Search API (`api.github.com`).
+- **What the script does not send:** it never uploads your source code, file
+  contents or file names. Claude reads your manifest files in the conversation,
+  as it normally does, and only the keywords it derives are used in the query.
+- **No credentials:** the plugin reads no tokens, keys or passwords, from your
+  machine or anywhere else.
 - **No other services:** the plugin has no server of its own, collects no
   analytics and stores nothing.
 
@@ -94,7 +91,7 @@ python3 skills/repo-scout/scripts/scout.py \
 
 Options: `--keywords` (required, 2-3 terms work best), `--language`, `--topic`,
 `--min-stars` (default 300), `--active-days` (default 365), `--limit`
-(default 10), `--exclude owner/repo ...`, `--format markdown|json`, `--token`.
+(default 10), `--exclude owner/repo ...`, `--format markdown|json`.
 
 ## License
 

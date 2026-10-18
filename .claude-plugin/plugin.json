@@ -10,6 +10,7 @@
   "homepage": "https://github.com/dufortservice/repo-scout",
   "repository": "https://github.com/dufortservice/repo-scout",
   "license": "MIT",
+  "icon": "./.claude-plugin/icon.png",
   "keywords": [
     "github",
     "open-source",

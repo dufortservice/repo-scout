@@ -79,9 +79,9 @@ python3 "${CLAUDE_PLUGIN_ROOT}/skills/repo-scout/scripts/scout.py" \
   tools might legitimately be stable/dormant.
 - Add `--exclude owner/repo` for anything the user already knows about and
   wants filtered out of results.
-- Set a `GITHUB_TOKEN` env var if available to raise the rate limit from
-  10 req/min to 30 req/min — useful when running several keyword combinations
-  back to back.
+- The GitHub Search API allows about 10 unauthenticated requests per minute.
+  When running several keyword combinations back to back, keep it to a
+  handful of runs; if you hit the limit, wait a minute and retry.
 - Use `--format json` when you need to post-process/merge results across
   multiple runs; use the default markdown format for a final human-readable
   report.

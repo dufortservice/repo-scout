@@ -18,14 +18,13 @@ Usage:
                     --limit 8 \
                     --format json
 
-Auth (optional but recommended): set GITHUB_TOKEN env var to raise the
-GitHub Search API rate limit from 10 req/min (unauthenticated) to 30 req/min.
+Uses the unauthenticated GitHub Search API (about 10 requests per minute).
+No credentials are read or sent.
 """
 
 import argparse
 import json
 import math
-import os
 import sys
 import urllib.error
 import urllib.parse
@@ -64,7 +63,7 @@ def build_query(keywords, language, min_stars, active_days, topic, exclude):
     return " ".join(parts)
 
 
-def fetch(query, per_page, token):
+def fetch(query, per_page):
     params = {
         "q": query,
         "sort": "stars",
@@ -75,8 +74,6 @@ def fetch(query, per_page, token):
     req = urllib.request.Request(url)
     req.add_header("Accept", "application/vnd.github+json")
     req.add_header("User-Agent", "repo-scout-skill")
-    if token:
-        req.add_header("Authorization", f"Bearer {token}")
 
     try:
         with urllib.request.urlopen(req, timeout=20) as resp:
@@ -179,13 +176,12 @@ def main():
     ap.add_argument("--limit", type=int, default=10, help="Number of results to show (default: 10)")
     ap.add_argument("--exclude", nargs="*", default=[], help="Repos to exclude, e.g. owner/repo")
     ap.add_argument("--format", choices=["json", "markdown"], default="markdown")
-    ap.add_argument("--token", default=os.environ.get("GITHUB_TOKEN"), help="GitHub token (or set GITHUB_TOKEN env var)")
     args = ap.parse_args()
 
     query = build_query(
         args.keywords, args.language, args.min_stars, args.active_days, args.topic, args.exclude
     )
-    data, remaining = fetch(query, per_page=min(args.limit * 3, 100), token=args.token)
+    data, remaining = fetch(query, per_page=min(args.limit * 3, 100))
 
     items = data.get("items", [])
     ranked = []
